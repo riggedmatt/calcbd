@@ -12,7 +12,7 @@ print(os.getcwd() + ":File_Directory_Revealed")
 t.sleep(2)
 
 while True:
-  decide_input_options = input("What caluclation would you like to do? [B,D]\n")
+  decide_input_options = input("What calculation would you like to do? [B,D,BA]\n")
   if "B" in decide_input_options:
     t.sleep(1)
     print("Loading Binary converter...")
@@ -23,18 +23,24 @@ while True:
        int(binary_input)
       except:
        if binary_input != int:
-         print("Error 1: Did not expect 'int'")
-         binary_input = input("Enter your first number\n")
+         print("Error 1: Expect an integar\n")
+         binary_input = input("Enter a binary number\n")
       else:
         break
     binary = bin(int(binary_input))
     if "b" in binary:
      print(str(binary.replace('0b','')))
   elif "D" in decide_input_options:
-    t.sleep(1)
-    print("Loading Denary Converter...")
-    t.sleep(1)
-    print("FORMAT: MUST PUT B IN THE SECOND LETTER, E.G: 0b010101")
-    denary_input = input("Enter binary number\n")
-    lol = int(denary_input, base=0)
-    print(lol)
+      t.sleep(1)
+      print("Loading Denary Converter...")
+      t.sleep(1)
+      denary_input = input("Enter binary number\n")
+      while True:
+       try:
+         int(denary_input)
+         break
+       except ValueError:
+            print("Error 1: Expect an integar\n")
+            denary_input = input("Enter a binary number\n")
+      lol = int('0b' + denary_input, base=0)
+      print(lol)
