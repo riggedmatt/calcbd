@@ -13,7 +13,7 @@ t.sleep(2)
 
 while True:
   decide_input_options = input("What calculation would you like to do? [B,D,BA]\n")
-  if "B" in decide_input_options:
+  if decide_input_options == "B":
     t.sleep(1)
     print("Loading Binary converter...")
     t.sleep(1)
@@ -21,16 +21,14 @@ while True:
     while True:
       try:
        int(binary_input)
-      except:
-       if binary_input != int:
-         print("Error 1: Expect an integar\n")
+       break
+      except ValueError:
+         print("Error 1: Expect an integer\n")
          binary_input = input("Enter a binary number\n")
-      else:
-        break
     binary = bin(int(binary_input))
     if "b" in binary:
      print(str(binary.replace('0b','')))
-  elif "D" in decide_input_options:
+  elif decide_input_options == "D":
       t.sleep(1)
       print("Loading Denary Converter...")
       t.sleep(1)
@@ -40,7 +38,26 @@ while True:
          int(denary_input)
          break
        except ValueError:
-            print("Error 1: Expect an integar\n")
+            print("Error 1: Expect an integer\n")
             denary_input = input("Enter a binary number\n")
       lol = int('0b' + denary_input, base=0)
       print(lol)
+  elif decide_input_options == "BA":
+    t.sleep(1)
+    print("Loading Binary Addition..")
+    t.sleep(1)
+    first_input = input("Enter a number\n")
+    second_input = input("Enter another number\n")
+    while True:
+      try:
+       int(first_input)
+       int(second_input)
+       break
+      except ValueError:
+         print("Error 1: Expect an integer\n")
+         first_input = input("Enter a number\n")
+    first_number = int(first_input)
+    second_number = int(second_input)
+    final_out_put = first_number + second_number
+    final_lol_really = bin(final_out_put)
+    print(str(final_lol_really.replace('0b','')))
